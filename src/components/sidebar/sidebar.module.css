@@ -1,0 +1,16 @@
+.container{
+    /* background-color: red; */
+    width: 20vw;
+}
+.header{
+    padding: 20px;
+}
+.itemContainer{
+    padding: 20px;
+}
+.subItemContainer{
+    display: flex;
+}
+.subItem{
+    padding: 2px;
+}
