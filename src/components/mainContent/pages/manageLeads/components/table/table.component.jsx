@@ -5,6 +5,8 @@ import { LEADS } from "../../../../../../api/leads";
 import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
+import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
+import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 
 import {
     Paper,
@@ -37,7 +39,7 @@ function renderCallStatus(status) {
     if (status) {
         return (
             <div className={style.done}>
-                <CheckCircleOutlinedIcon sx={{fontSize: 15, mr: 0.5}}/>
+                <CheckCircleOutlinedIcon sx={{ fontSize: 15, mr: 0.5 }} />
                 <div>
                     Done
                 </div>
@@ -46,7 +48,10 @@ function renderCallStatus(status) {
     } else {
         return (
             <div className={style.markDone}>
-                Mark Done
+                <DoneOutlinedIcon sx={{ fontSize: 15, mr: 0.5 }} />
+                <div>
+                    Mark Done
+                </div>
             </div>
         )
     }
@@ -103,7 +108,7 @@ function LeadsTable() {
                                         left: 0,
                                         zIndex: 3,
                                         background: "#fff",
-                                        minWidth: 220,
+                                        minWidth: 100,
                                         fontWeight: 700,
                                     }}
                                 >
@@ -123,11 +128,11 @@ function LeadsTable() {
 
                                 <TableCell
                                     sx={{
-                                        position: "sticky",
-                                        right: 0,
-                                        zIndex: 3,
+                                        // position: "sticky",
+                                        // right: 0,
+                                        // zIndex: 3,
                                         background: "#fff",
-                                        minWidth: 140,
+                                        // minWidth: 140,
                                         fontWeight: 700,
                                     }}
                                 >
@@ -145,7 +150,7 @@ function LeadsTable() {
                                             left: 0,
                                             background: "#fff",
                                             zIndex: 2,
-                                            minWidth: 220,
+                                            // minWidth: 220,
                                         }}
                                     >
                                         <div
@@ -219,15 +224,20 @@ function LeadsTable() {
                                     </TableCell>
                                     <TableCell
                                         sx={{
-                                            position: "sticky",
+                                            // position: "sticky",
                                             right: 0,
                                             background: "#fff",
                                             zIndex: 2,
                                             fontWeight: 600,
-                                            minWidth: 140,
+                                            // minWidth: 140,
                                         }}
                                     >
-                                        More
+                                        <div className={style.more}>
+                                            <div>
+                                                More
+                                            </div>
+                                            <ArrowForwardIosOutlinedIcon sx={{ fontSize: 15, ml: 0.5 }} />
+                                        </div>
                                     </TableCell>
                                 </TableRow>
                             ))}

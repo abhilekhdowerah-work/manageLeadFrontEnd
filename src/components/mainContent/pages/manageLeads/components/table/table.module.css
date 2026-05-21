@@ -30,3 +30,22 @@
     justify-content: center;
     align-items: center;
 }
+.markDone{
+    background-color: rgb(0, 77, 0);
+    color: white;
+    padding: 0 5px;
+    border-radius: 5px;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.more{
+    border: 1px solid grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 5px;
+    border-radius: 5px;
+    width: fit-content;
+}
