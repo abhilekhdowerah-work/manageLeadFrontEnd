@@ -17,6 +17,14 @@
   overflow: auto;
 }
 
+.smallScreen {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.bigScreen {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
 @media (max-width: 768px) {
   .navButton {
     display: block;
@@ -40,6 +48,7 @@
   .navButton {
     display: none;
   }
+
   .bigScreen {
     display: block;
     border-right: 1px solid rgb(228, 228, 228);

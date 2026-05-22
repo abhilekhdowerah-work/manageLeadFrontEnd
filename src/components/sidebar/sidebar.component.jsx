@@ -12,8 +12,9 @@ import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
 import ThreePOutlinedIcon from '@mui/icons-material/ThreePOutlined';
 import WifiCallingOutlinedIcon from '@mui/icons-material/WifiCallingOutlined';
 import TableChartOutlinedIcon from '@mui/icons-material/TableChartOutlined';
-
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+
+import logo from "../../assets/logo.png";
 import { useState } from "react";
 
 const menuItems = [
@@ -46,8 +47,11 @@ function SideBar() {
     return (
         <div className={style.container}>
             {/* <MenuOutlinedIcon /> */}
-            <div className={style.header}>Travelogy</div>
-            <DropdownList/>
+            {/* <div className={style.header}>Travelogy</div> */}
+            <div className={style.imageContainer}>
+                <img src={logo} alt="logo" className={style.image}/>
+            </div>
+            <DropdownList />
             <div>
                 {menuItems.map(item => (
                     <div key={item.id} className={style.itemContainer}>

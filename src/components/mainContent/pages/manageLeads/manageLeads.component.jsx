@@ -35,15 +35,15 @@ function ManageLeads() {
                     <Typography variant="h6" gutterBottom>
                         {PERFORMANCE_OVERVIEW.TITLE}
                     </Typography>
-                    <Grid container spacing={1}>{PERFORMANCE_OVERVIEW.LIST.map(item => (
+                    <Grid container spacing={3}>{PERFORMANCE_OVERVIEW.LIST.map(item => (
                         <Grid size={{xs: 12, sm: 6, md: 3}} key={item.id} className={style.performanceNodes}>
                             <div className={style.performanceNodeHeader}>
-                                <Typography variant="overline" gutterBottom sx={{ display: 'block' }}>
+                                <Typography variant="caption" gutterBottom sx={{ display: 'block' }}>
                                     {item.title}
                                 </Typography>
                                 <div>{item.icon}</div>
                             </div>
-                            <Typography variant="h6" gutterBottom sx={{ display: 'block' }}>
+                            <Typography variant="h6" sx={{ display: 'block' }}>
                                 <b>{item.helperFunction(calculateValue(item.title))}</b>
                             </Typography>
                         </Grid>

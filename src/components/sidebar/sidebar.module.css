@@ -1,6 +1,6 @@
 .container {
     /* background-color: red; */
-    width: fit-content;
+    width: 240px;
 }
 
 .header {
@@ -24,6 +24,11 @@
 .link {
     all: unset;
     cursor: pointer;
+}
+.image{
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 @media (max-width: 768px) {
