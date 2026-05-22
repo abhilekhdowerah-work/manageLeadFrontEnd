@@ -28,7 +28,7 @@ const menuItems = [
         ]
     },
     {
-        id: 1,
+        id: 2,
         title: "CONTROL CENTER",
         list: [
             { id: 1, title: "Team Members", icon: <PeopleAltOutlinedIcon />, link: "/page-not-found" },
@@ -55,7 +55,7 @@ function SideBar() {
                             {item.title}
                         </Typography>
                         {item?.list.map(subItem => (
-                            <div className={style.subItemContainer}>
+                            <div key={subItem.id} className={style.subItemContainer}>
                                 <div className={style.subItem}>{subItem.icon}</div>
                                 <Typography className={style.subItem} variant="body1" gutterBottom>
                                     <a href={subItem.link} className={style.link}>{subItem.title}</a>

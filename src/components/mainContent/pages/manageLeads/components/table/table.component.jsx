@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import style from './table.module.css';
 import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import { LEADS } from "../../../../../../api/leads";
 import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
@@ -19,6 +21,19 @@ import {
     TableRow,
     Avatar,
 } from "@mui/material";
+import ModelBox from "../modelBox/modelBox.component";
+
+const styleForModel = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 300,
+    bgcolor: 'background.paper',
+    borderRadius: 2,
+    p: 4,
+    outline: 'none'
+};
 
 function renderStatus(status) {
     if (status) {
@@ -73,10 +88,12 @@ function convertUnixToIST(unixTimestamp) {
 }
 
 function LeadsTable() {
+    const [open, setOpen] = useState(false);
+    const [selectedName, setSelectedName] = useState('');
     const [tableData, setTableData] = useState(LEADS);
 
     const onfieldChange = (e) => {
-        const newdatas = LEADS.filter(x=>x.name.toLowerCase().includes(e.target.value.toLowerCase()) || x.mobile.includes(e.target.value));
+        const newdatas = LEADS.filter(x => x.name.toLowerCase().includes(e.target.value.toLowerCase()) || x.mobile.includes(e.target.value));
         setTableData(newdatas);
     }
     return (
@@ -85,7 +102,7 @@ function LeadsTable() {
                 <Typography variant="h6" gutterBottom>
                     Your Leads
                 </Typography>
-                <TextField id="standard-basic" label="Enter Email or Phone" variant="standard" onChange={(e)=>onfieldChange(e)}/>
+                <TextField id="standard-basic" label="Enter Email or Phone" variant="standard" onChange={(e) => onfieldChange(e)} />
             </div>
             <Paper
                 elevation={0}
@@ -209,7 +226,7 @@ function LeadsTable() {
                                         </Typography>
                                     </TableCell>
                                     <TableCell>
-                                        <div className={style.leadOwner}>
+                                        <div className={style.leadOwner} style={{cursor: 'pointer'}} onClick={()=>{setOpen(true); setSelectedName(item.name)}}>
                                             <CalendarMonthOutlinedIcon />
                                             <Typography variant="caption" gutterBottom sx={{ display: 'block', ml: 1, whiteSpace: 'nowrap' }}>
                                                 Set follow up
@@ -228,12 +245,10 @@ function LeadsTable() {
                                     </TableCell>
                                     <TableCell
                                         sx={{
-                                            // position: "sticky",
                                             right: 0,
                                             background: "#fff",
                                             zIndex: 2,
                                             fontWeight: 600,
-                                            // minWidth: 140,
                                         }}
                                     >
                                         <div className={style.more}>
@@ -249,6 +264,17 @@ function LeadsTable() {
                     </Table>
                 </TableContainer>
             </Paper>
+
+            <Modal
+                open={open}
+                onClose={()=>setOpen(false)}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={styleForModel}>
+                    <ModelBox name={selectedName} onClose={()=>setOpen(false)}/>
+                </Box>
+            </Modal>
         </>
 
     );

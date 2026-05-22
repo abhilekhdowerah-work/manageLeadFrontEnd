@@ -1,0 +1,12 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.timeBorder{
+    border: 1px solid rgb(222, 222, 222);
+    width: fit-content;
+    padding: 5px 15px;
+    border-radius: 5px;
+    margin-right: 20px;
+}

@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import style from './mainContent.module.css';
 import ManageLeads from "./pages/manageLeads/manageLeads.component.jsx";
 
@@ -7,6 +7,7 @@ function MainContent() {
         <div className={style.container}>
 
             <Routes>
+                <Route path="/" element={<Navigate to="/manage-leads"/>} />
                 <Route path="/manage-leads" element={<ManageLeads />} />
             </Routes>
         </div>
