@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import style from './table.module.css';
 import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
 import { LEADS } from "../../../../../../api/leads";
 import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
@@ -72,12 +73,20 @@ function convertUnixToIST(unixTimestamp) {
 }
 
 function LeadsTable() {
-    console.log("leads: ", LEADS)
+    const [tableData, setTableData] = useState(LEADS);
+
+    const onfieldChange = (e) => {
+        const newdatas = LEADS.filter(x=>x.name.toLowerCase().includes(e.target.value.toLowerCase()) || x.mobile.includes(e.target.value));
+        setTableData(newdatas);
+    }
     return (
         <>
-            <Typography variant="h6" gutterBottom>
-                Your Leads
-            </Typography>
+            <div className={style.header}>
+                <Typography variant="h6" gutterBottom>
+                    Your Leads
+                </Typography>
+                <TextField id="standard-basic" label="Enter Email or Phone" variant="standard" onChange={(e)=>onfieldChange(e)}/>
+            </div>
             <Paper
                 elevation={0}
                 sx={{
@@ -128,11 +137,7 @@ function LeadsTable() {
 
                                 <TableCell
                                     sx={{
-                                        // position: "sticky",
-                                        // right: 0,
-                                        // zIndex: 3,
                                         background: "#fff",
-                                        // minWidth: 140,
                                         fontWeight: 700,
                                     }}
                                 >
@@ -142,7 +147,7 @@ function LeadsTable() {
                         </TableHead>
 
                         <TableBody>
-                            {LEADS.map((item) => (
+                            {tableData.map((item) => (
                                 <TableRow hover key={item.id}>
                                     <TableCell
                                         sx={{
@@ -150,7 +155,6 @@ function LeadsTable() {
                                             left: 0,
                                             background: "#fff",
                                             zIndex: 2,
-                                            // minWidth: 220,
                                         }}
                                     >
                                         <div

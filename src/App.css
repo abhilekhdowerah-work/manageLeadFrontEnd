@@ -1,7 +1,38 @@
-.container{
+.container {
   background-color: white;
   color: black;
-  /* height: 100vh;
-  width: 100vw; */
   display: flex;
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.mainContent {
+  flex: 1;
+  min-width: 0;
+  overflow: auto;
+}
+
+@media (max-width: 768px) {
+  .bigScreen {
+    display: none;
+    border-right: 1px solid rgb(228, 228, 228);
+  }
+
+  .smallScreen {
+    display: block;
+    border-right: 1px solid rgb(228, 228, 228);
+  }
+}
+
+@media (min-width: 769px) {
+  .bigScreen {
+    display: block;
+    border-right: 1px solid rgb(228, 228, 228);
+  }
+
+  .smallScreen {
+    display: none;
+    border-right: 1px solid rgb(228, 228, 228);
+  }
 }

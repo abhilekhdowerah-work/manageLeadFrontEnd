@@ -13,27 +13,30 @@ import ThreePOutlinedIcon from '@mui/icons-material/ThreePOutlined';
 import WifiCallingOutlinedIcon from '@mui/icons-material/WifiCallingOutlined';
 import TableChartOutlinedIcon from '@mui/icons-material/TableChartOutlined';
 
+import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+import { useState } from "react";
+
 const menuItems = [
     {
         id: 1,
         title: "MAIN",
         list: [
-            { id: 1, title: "Dashboard", icon: <DashboardOutlinedIcon /> },
-            { id: 2, title: "Generate Leads", icon: <RocketLaunchOutlinedIcon />},
-            { id: 3, title: "Manage Leads", icon: <TableRowsOutlinedIcon />},
-            { id: 4, title: "Engage Leads", icon: <ChatBubbleOutlineOutlinedIcon />}
+            { id: 1, title: "Dashboard", icon: <DashboardOutlinedIcon />, link: "/page-not-found" },
+            { id: 2, title: "Generate Leads", icon: <RocketLaunchOutlinedIcon />, link: "/page-not-found" },
+            { id: 3, title: "Manage Leads", icon: <TableRowsOutlinedIcon />, link: "/manage-leads" },
+            { id: 4, title: "Engage Leads", icon: <ChatBubbleOutlineOutlinedIcon />, link: "/page-not-found" },
         ]
     },
     {
         id: 1,
         title: "CONTROL CENTER",
         list: [
-            { id: 1, title: "Team Members", icon: <PeopleAltOutlinedIcon /> },
-            { id: 2, title: "Lead Sources", icon: <CampaignOutlinedIcon />},
-            { id: 3, title: "Ad Accounts", icon: <PersonAddAltOutlinedIcon />},
-            { id: 4, title: "WhatsApp Accounts", icon: <ThreePOutlinedIcon />},
-            { id: 5, title: "Tele Calling", icon: <WifiCallingOutlinedIcon /> },
-            { id: 6, title: "CRM Fields", icon: <TableChartOutlinedIcon />},
+            { id: 1, title: "Team Members", icon: <PeopleAltOutlinedIcon />, link: "/page-not-found" },
+            { id: 2, title: "Lead Sources", icon: <CampaignOutlinedIcon />, link: "/page-not-found" },
+            { id: 3, title: "Ad Accounts", icon: <PersonAddAltOutlinedIcon />, link: "/page-not-found" },
+            { id: 4, title: "WhatsApp Accounts", icon: <ThreePOutlinedIcon />, link: "/page-not-found" },
+            { id: 5, title: "Tele Calling", icon: <WifiCallingOutlinedIcon />, link: "/page-not-found" },
+            { id: 6, title: "CRM Fields", icon: <TableChartOutlinedIcon />, link: "/page-not-found" },
         ]
     },
 
@@ -42,6 +45,7 @@ const menuItems = [
 function SideBar() {
     return (
         <div className={style.container}>
+            {/* <MenuOutlinedIcon /> */}
             <div className={style.header}>Travelogy</div>
             <DropdownList/>
             <div>
@@ -54,7 +58,7 @@ function SideBar() {
                             <div className={style.subItemContainer}>
                                 <div className={style.subItem}>{subItem.icon}</div>
                                 <Typography className={style.subItem} variant="body1" gutterBottom>
-                                    {subItem.title}
+                                    <a href={subItem.link} className={style.link}>{subItem.title}</a>
                                 </Typography>
                             </div>
                         ))}

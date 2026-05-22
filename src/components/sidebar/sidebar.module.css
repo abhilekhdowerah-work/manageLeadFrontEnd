@@ -1,16 +1,33 @@
-.container{
+.container {
     /* background-color: red; */
-    width: 20vw;
+    width: fit-content;
 }
-.header{
+
+.header {
     padding: 20px;
 }
-.itemContainer{
+
+.itemContainer {
     padding: 20px;
 }
-.subItemContainer{
+
+.subItemContainer {
     display: flex;
 }
-.subItem{
+
+.subItem {
     padding: 2px;
+}
+.selectedSubItemContainer{
+    background-color: green;
+}
+.link {
+    all: unset;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 240px;
+  }
 }

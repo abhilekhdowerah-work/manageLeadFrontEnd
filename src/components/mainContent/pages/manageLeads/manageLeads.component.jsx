@@ -6,8 +6,20 @@ import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import RadioButtonCheckedOutlinedIcon from '@mui/icons-material/RadioButtonCheckedOutlined';
 import LeadsTable from './components/table/table.component.jsx';
+import { LEADS } from '../../../../api/leads.js';
 
 function ManageLeads() {
+    const calculateValue = (title) => {
+        switch(title) {
+            case "Total Leads": return LEADS.length;
+                break;
+            case "Contected Leads": return LEADS.filter(x=>x.call_status).length;
+                break;
+            case "Sales Done": return LEADS.filter(x=>x.crm.status).length;
+                break;
+            default: return (LEADS.filter(x=>x.crm.status).length)/(LEADS.length)*100;
+        }
+    }
     return (
         <div>
             <div className={style.header}>
@@ -32,7 +44,7 @@ function ManageLeads() {
                                 <div>{item.icon}</div>
                             </div>
                             <Typography variant="h6" gutterBottom sx={{ display: 'block' }}>
-                                <b>{item.helperFunction(item.value)}</b>
+                                <b>{item.helperFunction(calculateValue(item.title))}</b>
                             </Typography>
                         </Grid>
                     ))}</Grid>

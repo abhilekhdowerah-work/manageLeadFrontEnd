@@ -24,14 +24,13 @@ function DropdownList() {
             setSelected(businesses.data[0])
         }
     }, [businesses])
-    console.log("business:", businesses?.data);
     if (loading) {
         return (
             <></>
         )
     } else {
         return (
-            <FormControl>
+            <FormControl sx={{m: 1}}>
                 <Select
                     value={selected.id}
                     onChange={(e) => {
