@@ -21,7 +21,7 @@ function ManageLeads() {
         }
     }
     return (
-        <div>
+        <div style={{width: '100%'}}>
             <div className={style.header}>
                 <Typography variant="h5" gutterBottom>
                     {HEADER}

@@ -46,11 +46,10 @@ const menuItems = [
 function SideBar() {
     return (
         <div className={style.container}>
-            {/* <MenuOutlinedIcon /> */}
-            {/* <div className={style.header}>Travelogy</div> */}
-            <div className={style.imageContainer}>
+            <div className={style.header}>Travelogy</div>
+            {/* <div className={style.imageContainer}>
                 <img src={logo} alt="logo" className={style.image}/>
-            </div>
+            </div> */}
             <DropdownList />
             <div>
                 {menuItems.map(item => (
