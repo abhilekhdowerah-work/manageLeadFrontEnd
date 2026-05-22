@@ -11,6 +11,7 @@ import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
 import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import CloseIcon from '@mui/icons-material/Close';
+import Grid from '@mui/material/Grid';
 
 import {
     Paper,
@@ -280,11 +281,17 @@ function LeadsTable() {
                         ml: 1
                     }}
                 >
-                    <div>
-                        <Typography variant="h5" gutterBottom>
-                            {selectedLead.company + ' ( ' + selectedLead.owner_name + ' )'} 
-                        </Typography>
-                        <CloseIcon onClick={()=>setSelectedLead(null)}/>
+                    <div className={style.detailsBox}>
+                        <div className={style.detailsHeader}>
+                            <Typography variant="h6">
+                                {selectedLead.company + ' ( ' + selectedLead.owner_name + ' )'}
+                            </Typography>
+                            <CloseIcon sx={{ cursor: 'pointer' }} onClick={() => setSelectedLead(null)} />
+                        </div>
+                        <Grid container spacing={3}>
+                            <Grid size={{ xs: 12, sm: 6, md: 3 }}>
+                            </Grid>
+                        </Grid>
                     </div>
                 </Paper>}
             </div>

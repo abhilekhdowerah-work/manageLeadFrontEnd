@@ -56,3 +56,11 @@
     align-items: flex-end;
     margin: 10px 0;
 }
+.detailsBox{
+    padding: 10px;
+}
+.detailsHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
