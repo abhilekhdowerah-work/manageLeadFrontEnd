@@ -1,3 +1,7 @@
+.navButton {
+  display: none;
+}
+
 .container {
   background-color: white;
   color: black;
@@ -14,6 +18,13 @@
 }
 
 @media (max-width: 768px) {
+  .navButton {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
   .bigScreen {
     display: none;
     border-right: 1px solid rgb(228, 228, 228);
@@ -26,6 +37,9 @@
 }
 
 @media (min-width: 769px) {
+  .navButton {
+    display: none;
+  }
   .bigScreen {
     display: block;
     border-right: 1px solid rgb(228, 228, 228);

@@ -8,20 +8,31 @@ import { useState } from 'react';
 function App() {
   const [isOpen, setIsOpen] = useState(false)
   return (
-    <div className="container">
-      <div className="smallScreen">
-        <MenuIcon onClick={() => setIsOpen(true)} />
-        <Drawer open={isOpen} onClose={() => setIsOpen(false)} >
+    <>
+      {!isOpen &&
+        <div
+          className='navButton'>
+          <MenuIcon
+            onClick={() => setIsOpen(true)}
+            sx={{
+              fontSize: 40
+            }}
+          />
+        </div>}
+      <div className="container">
+        <div className="smallScreen">
+          <Drawer open={isOpen} onClose={() => setIsOpen(false)} >
+            <SideBar />
+          </Drawer>
+        </div>
+        <div className="bigScreen">
           <SideBar />
-        </Drawer>
+        </div>
+        <div className='mainContent'>
+          <MainContent />
+        </div>
       </div>
-      <div className="bigScreen">
-        <SideBar />
-      </div>
-      <div className='mainContent'>
-        <MainContent />
-      </div>
-    </div>
+    </>
   )
 }
 
