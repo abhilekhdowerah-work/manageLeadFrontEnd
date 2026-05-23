@@ -1,6 +1,7 @@
 .container {
     /* background-color: red; */
     width: 240px;
+    height: 100vh;
 }
 
 .header {
@@ -13,6 +14,8 @@
 
 .subItemContainer {
     display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .subItem {
@@ -29,6 +32,10 @@
   width: 100%;
   height: auto;
   display: block;
+}
+.title{
+    color: rgb(182, 182, 182);
+    font-size: 10px !important;
 }
 
 @media (max-width: 768px) {
