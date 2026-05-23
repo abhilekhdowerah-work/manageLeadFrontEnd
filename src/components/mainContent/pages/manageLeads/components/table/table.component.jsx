@@ -194,6 +194,7 @@ function LeadsTable() {
                                     <TableCell
                                         sx={{
                                             position: "sticky",
+                                            zIndex: 3,
                                             right: 0,
                                             background: "#fff",
                                             fontWeight: 700,
