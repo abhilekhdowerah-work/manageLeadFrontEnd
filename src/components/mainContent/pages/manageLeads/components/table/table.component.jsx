@@ -33,17 +33,36 @@ import {
     Avatar,
 } from "@mui/material";
 import ModelBox from "../modelBox/modelBox.component";
+import SelectedLeadDetails from "../selectedLeadDetails/selectedLeadDetails.component";
 
 const styleForModel = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 300,
+    // width: 300,
     bgcolor: 'background.paper',
     borderRadius: 2,
-    p: 4,
+    // p: 4,
     outline: 'none'
+};
+
+const styleForDetailsModel = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "fit-content",
+    minWidth: "85vw",
+    maxHeight: "95vh",
+    bgcolor: "background.paper",
+    borderRadius: "20px",
+    // overflow: "hidden",
+    outline: "none",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    boxShadow: 24,
 };
 
 function renderStatus(status) {
@@ -281,151 +300,152 @@ function LeadsTable() {
                         </Table>
                     </TableContainer>
                 </Paper>
-                {selectedLead && <Paper
-                    elevation={0}
-                    sx={{
-                        width: !selectedLead ? "0%" : "50%",
-                        overflow: "hidden",
-                        borderRadius: "16px",
-                        border: "1px solid #E5E7EB",
-                        ml: 1,
-                        boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)"
-                    }}
-                >
-                    <div className={style.detailsBox}>
-                        <div className={style.detailsHeader}>
-                            <Typography variant="h6">
-                                {selectedLead.company + ' ( ' + selectedLead.owner_name + ' )'}
-                            </Typography>
-                            <CloseIcon sx={{ cursor: 'pointer' }} onClick={() => setSelectedLead(null)} />
+                {selectedLead &&
+                    <Paper
+                        elevation={0}
+                        sx={{
+                            width: !selectedLead ? "0%" : "50%",
+                            overflow: "hidden",
+                            borderRadius: "16px",
+                            border: "1px solid #E5E7EB",
+                            ml: 1,
+                            boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)"
+                        }}
+                    >
+                        <div className={style.detailsBox}>
+                            <div className={style.detailsHeader}>
+                                <Typography variant="h6">
+                                    {selectedLead.company + ' ( ' + selectedLead.owner_name + ' )'}
+                                </Typography>
+                                <CloseIcon sx={{ cursor: 'pointer' }} onClick={() => setSelectedLead(null)} />
+                            </div>
+                            <div className={style.iconContainer}>
+                                <div className={style.iconBox}>
+                                    <CallOutlinedIcon fontSize="small" />
+                                </div>
+
+                                <div className={style.iconBox}>
+                                    <WhatsAppIcon fontSize="small" />
+                                </div>
+
+                                <div className={style.iconBox}>
+                                    <ShareOutlinedIcon fontSize="small" />
+                                </div>
+
+                                <div className={`${style.iconBox} ${style.active}`}>
+                                    <LocalMallOutlinedIcon fontSize="small" />
+                                </div>
+                            </div>
+                            <Grid container spacing={3}>
+                                <Grid
+                                    size={{ xs: 12, sm: 6 }}
+                                    className={style.detailsNode}
+                                >
+                                    <div className={style.iconWrapper}>
+                                        <EmailOutlinedIcon className={style.icon} />
+                                    </div>
+
+                                    <div className={style.textWrapper}>
+                                        <Typography className={style.label}>
+                                            EMAIL
+                                        </Typography>
+
+                                        <Typography className={style.value}>
+                                            {selectedLead.email}
+                                        </Typography>
+                                    </div>
+                                </Grid>
+                                <Grid
+                                    size={{ xs: 12, sm: 6 }}
+                                    className={style.detailsNode}
+                                >
+                                    <div className={style.iconWrapper}>
+                                        <LocalPhoneOutlinedIcon className={style.icon} />
+                                    </div>
+
+                                    <div className={style.textWrapper}>
+                                        <Typography className={style.label}>
+                                            CONTACT NUMBER
+                                        </Typography>
+
+                                        <Typography className={style.value}>
+                                            {selectedLead.mobile}
+                                        </Typography>
+                                    </div>
+                                </Grid>
+                                <Grid
+                                    size={{ xs: 12, sm: 6 }}
+                                    className={style.detailsNode}
+                                >
+                                    <div className={style.iconWrapper}>
+                                        <LocalOfferOutlinedIcon className={style.icon} />
+                                    </div>
+
+                                    <div className={style.textWrapper}>
+                                        <Typography className={style.label}>
+                                            STATUS
+                                        </Typography>
+
+                                        <Typography className={style.value}>
+                                            {renderStatus(selectedLead.crm.status)}
+                                        </Typography>
+                                    </div>
+                                </Grid>
+                                <Grid
+                                    size={{ xs: 12, sm: 6 }}
+                                    className={style.detailsNode}
+                                >
+                                    <div className={style.iconWrapper}>
+                                        <PersonOutlineOutlinedIcon className={style.icon} />
+                                    </div>
+
+                                    <div className={style.textWrapper}>
+                                        <Typography className={style.label}>
+                                            OWNER
+                                        </Typography>
+
+                                        <Typography className={style.value}>
+                                            {selectedLead.name}
+                                        </Typography>
+                                    </div>
+                                </Grid>
+                                <Grid
+                                    size={{ xs: 12, sm: 6 }}
+                                    className={style.detailsNode}
+                                >
+                                    <div className={style.iconWrapper}>
+                                        <LanguageOutlinedIcon className={style.icon} />
+                                    </div>
+
+                                    <div className={style.textWrapper}>
+                                        <Typography className={style.label}>
+                                            SOURCE
+                                        </Typography>
+
+                                        <Typography className={style.value}>
+                                            {selectedLead.custom_fields.acquisition_source}
+                                        </Typography>
+                                    </div>
+                                </Grid>
+                                <Grid
+                                    size={{ xs: 12 }}
+                                    className={style.detailsNode}
+                                >
+                                    <div className={style.iconWrapper}>
+                                        <EmailOutlinedIcon className={style.icon} />
+                                    </div>
+                                    <div className={style.textWrapper}>
+                                        <Typography className={style.value}>
+                                            Call Status Today
+                                        </Typography>
+                                        <Typography className={style.label}>
+                                            {selectedLead.call_status ? "You have called this lead today." : "You have not called this lead today"}
+                                        </Typography>
+                                    </div>
+                                </Grid>
+                            </Grid>
                         </div>
-                        <div className={style.iconContainer}>
-                            <div className={style.iconBox}>
-                                <CallOutlinedIcon fontSize="small" />
-                            </div>
-
-                            <div className={style.iconBox}>
-                                <WhatsAppIcon fontSize="small" />
-                            </div>
-
-                            <div className={style.iconBox}>
-                                <ShareOutlinedIcon fontSize="small" />
-                            </div>
-
-                            <div className={`${style.iconBox} ${style.active}`}>
-                                <LocalMallOutlinedIcon fontSize="small" />
-                            </div>
-                        </div>
-                        <Grid container spacing={3}>
-                            <Grid
-                                size={{ xs: 12, sm: 6 }}
-                                className={style.detailsNode}
-                            >
-                                <div className={style.iconWrapper}>
-                                    <EmailOutlinedIcon className={style.icon} />
-                                </div>
-
-                                <div className={style.textWrapper}>
-                                    <Typography className={style.label}>
-                                        EMAIL
-                                    </Typography>
-
-                                    <Typography className={style.value}>
-                                        {selectedLead.email}
-                                    </Typography>
-                                </div>
-                            </Grid>
-                            <Grid
-                                size={{ xs: 12, sm: 6 }}
-                                className={style.detailsNode}
-                            >
-                                <div className={style.iconWrapper}>
-                                    <LocalPhoneOutlinedIcon className={style.icon} />
-                                </div>
-
-                                <div className={style.textWrapper}>
-                                    <Typography className={style.label}>
-                                        CONTACT NUMBER
-                                    </Typography>
-
-                                    <Typography className={style.value}>
-                                        {selectedLead.mobile}
-                                    </Typography>
-                                </div>
-                            </Grid>
-                            <Grid
-                                size={{ xs: 12, sm: 6 }}
-                                className={style.detailsNode}
-                            >
-                                <div className={style.iconWrapper}>
-                                    <LocalOfferOutlinedIcon className={style.icon} />
-                                </div>
-
-                                <div className={style.textWrapper}>
-                                    <Typography className={style.label}>
-                                        STATUS
-                                    </Typography>
-
-                                    <Typography className={style.value}>
-                                        {renderStatus(selectedLead.crm.status)}
-                                    </Typography>
-                                </div>
-                            </Grid>
-                            <Grid
-                                size={{ xs: 12, sm: 6 }}
-                                className={style.detailsNode}
-                            >
-                                <div className={style.iconWrapper}>
-                                    <PersonOutlineOutlinedIcon className={style.icon} />
-                                </div>
-
-                                <div className={style.textWrapper}>
-                                    <Typography className={style.label}>
-                                        OWNER
-                                    </Typography>
-
-                                    <Typography className={style.value}>
-                                        {selectedLead.name}
-                                    </Typography>
-                                </div>
-                            </Grid>
-                            <Grid
-                                size={{ xs: 12, sm: 6 }}
-                                className={style.detailsNode}
-                            >
-                                <div className={style.iconWrapper}>
-                                    <LanguageOutlinedIcon className={style.icon} />
-                                </div>
-
-                                <div className={style.textWrapper}>
-                                    <Typography className={style.label}>
-                                        SOURCE
-                                    </Typography>
-
-                                    <Typography className={style.value}>
-                                        {selectedLead.custom_fields.acquisition_source}
-                                    </Typography>
-                                </div>
-                            </Grid>
-                            <Grid
-                                size={{ xs: 12 }}
-                                className={style.detailsNode}
-                            >
-                                <div className={style.iconWrapper}>
-                                    <EmailOutlinedIcon className={style.icon} />
-                                </div>
-                                <div className={style.textWrapper}>
-                                    <Typography className={style.value}>
-                                        Call Status Today
-                                    </Typography>
-                                    <Typography className={style.label}>
-                                        {selectedLead.call_status ? "You have called this lead today." : "You have not called this lead today"}
-                                    </Typography>
-                                </div>
-                            </Grid>
-                        </Grid>
-                    </div>
-                </Paper>}
+                    </Paper>}
             </div>
             <Modal
                 open={open}
@@ -438,13 +458,14 @@ function LeadsTable() {
                 </Box>
             </Modal>
             <Modal
-                open={selectedLead?true:false}
+                open={selectedLead ? true : false}
                 onClose={() => setSelectedLead(null)}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
+                className={style.detailsModelBox}
             >
-                <Box sx={styleForModel}>
-                    <ModelBox name={selectedName} onClose={() => setSelectedLead(null)} />
+                <Box sx={styleForDetailsModel}>
+                    <SelectedLeadDetails selectedLead={selectedLead} onClose={()=>setSelectedLead(null)} />
                 </Box>
             </Modal>
         </div>

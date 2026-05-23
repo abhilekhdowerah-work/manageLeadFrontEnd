@@ -154,3 +154,13 @@
     color: #1ea672;
     border-color: #d7f0e4;
 }
+@media (min-width: 768px) {
+    .detailsModelBox{
+        display: none;
+    }
+}
+/* @media (max-width: 769px) {
+    .detailsModelBox{
+        display: none;
+    }
+} */
