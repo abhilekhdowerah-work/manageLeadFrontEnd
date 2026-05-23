@@ -1,0 +1,63 @@
+.container{
+    background-color: white;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.dropdownContainer{
+    /* background-color: red; */
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 20px;
+    border: 1px solid rgb(207, 207, 207);
+    /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
+}
+
+.dropdownListContainer{
+    display: flex;
+    gap: 10px;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.datePickerContainer{
+    margin: 10px 0;
+}
+
+.dateContainerInactive{
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    padding: 5px 15px;
+    border-radius: 20px;
+    border: 1px solid rgb(207, 207, 207);
+}
+
+.dateContainerActive{
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    padding: 5px 15px;
+    border-radius: 20px;
+    border: 2px solid rgb(0, 92, 8);
+    color: rgb(0, 92, 8);
+}
+
+.statusCross{
+    background-color: rgb(178, 237, 182);
+    margin-top: 10px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 20px;
+    border: 2px solid rgb(0, 92, 8);
+    color: rgb(0, 92, 8);
+}

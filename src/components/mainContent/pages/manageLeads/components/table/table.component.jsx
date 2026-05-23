@@ -40,10 +40,10 @@ const styleForModel = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    // width: 300,
+    width: 300,
     bgcolor: 'background.paper',
     borderRadius: 2,
-    // p: 4,
+    p: 4,
     outline: 'none'
 };
 
@@ -146,13 +146,18 @@ function LeadsTable() {
                         borderRadius: "16px",
                         border: "1px solid #E5E7EB",
                         mr: 1,
-                        boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)"
+                        boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.15)"
                     }}
                 >
                     <TableContainer
                         sx={{
                             maxHeight: 500,
                             overflowX: "auto",
+                            scrollbarWidth: "none",
+                            msOverflowStyle: "none",
+                            "&::-webkit-scrollbar": {
+                                display: "none",
+                            },
                         }}
                     >
                         <Table
@@ -165,31 +170,33 @@ function LeadsTable() {
                             <TableHead>
                                 <TableRow>
                                     <TableCell
+                                        className={style.tableHeader}
                                         sx={{
-                                            position: "sticky",
                                             left: 0,
                                             zIndex: 3,
                                             background: "#fff",
-                                            minWidth: 100,
-                                            fontWeight: 700,
+                                            minWidth: 160,
+                                            fontWeight: 600,
                                         }}
                                     >
                                         LEAD NAME
                                     </TableCell>
 
-                                    <TableCell sx={{ fontWeight: 700 }}>EMAIL</TableCell>
-                                    <TableCell sx={{ fontWeight: 700 }}>CONTACT</TableCell>
-                                    <TableCell sx={{ minWidth: 120, fontWeight: 700 }}>DATE CREATED</TableCell>
-                                    <TableCell sx={{ minWidth: 120, fontWeight: 700 }}>COMPANY</TableCell>
-                                    <TableCell sx={{ fontWeight: 700 }}>STATUS</TableCell>
-                                    <TableCell sx={{ minWidth: 120, fontWeight: 700 }}>LEAD OWNER</TableCell>
-                                    <TableCell sx={{ fontWeight: 700 }}>SOURCE</TableCell>
-                                    <TableCell sx={{ minWidth: 120, fontWeight: 700 }}>NEXT FOLLOW UP</TableCell>
-                                    <TableCell sx={{ minWidth: 120, fontWeight: 700 }}>CALL STATUS TODAY</TableCell>
-                                    <TableCell sx={{ minWidth: 120, fontWeight: 700 }}>ACQUISITION SOURCE</TableCell>
+                                    <TableCell className={style.tableHeader} sx={{ fontWeight: 600 }}>EMAIL</TableCell>
+                                    <TableCell className={style.tableHeader} sx={{ fontWeight: 600 }}>CONTACT</TableCell>
+                                    <TableCell className={style.tableHeader} sx={{ minWidth: 160, fontWeight: 600 }}>DATE CREATED</TableCell>
+                                    <TableCell className={style.tableHeader} sx={{ minWidth: 120, fontWeight: 600 }}>COMPANY</TableCell>
+                                    <TableCell className={style.tableHeader} sx={{ fontWeight: 600 }}>STATUS</TableCell>
+                                    <TableCell className={style.tableHeader} sx={{ minWidth: 160, fontWeight: 600 }}>LEAD OWNER</TableCell>
+                                    <TableCell className={style.tableHeader} sx={{ fontWeight: 600 }}>SOURCE</TableCell>
+                                    <TableCell className={style.tableHeader} sx={{ minWidth: 120, fontWeight: 600 }}>NEXT FOLLOW UP</TableCell>
+                                    <TableCell className={style.tableHeader} sx={{ minWidth: 160, fontWeight: 600 }}>CALL STATUS TODAY</TableCell>
+                                    <TableCell className={style.tableHeader} sx={{ minWidth: 180, fontWeight: 600 }}>ACQUISITION SOURCE</TableCell>
 
                                     <TableCell
+                                        className={style.tableHeader}
                                         sx={{
+                                            position: "sticky",
                                             background: "#fff",
                                             fontWeight: 700,
                                         }}
@@ -204,7 +211,6 @@ function LeadsTable() {
                                     <TableRow hover key={item.id}>
                                         <TableCell
                                             sx={{
-                                                position: "sticky",
                                                 left: 0,
                                                 background: "#fff",
                                                 zIndex: 2,
@@ -250,21 +256,21 @@ function LeadsTable() {
                                         </TableCell>
                                         <TableCell>
                                             {item.owner_name && <div className={style.leadOwner} >
-                                                <Typography variant="caption" gutterBottom sx={{ display: 'block' }}>
+                                                <Typography variant="caption" sx={{ display: 'block' }}>
                                                     {item.owner_name}
                                                 </Typography>
-                                                <BorderColorOutlinedIcon />
+                                                <BorderColorOutlinedIcon sx={{ fontSize: 17 }} />
                                             </div>}
                                         </TableCell>
                                         <TableCell>
-                                            <Typography variant="caption" className={style.leadOwner} gutterBottom sx={{ display: 'block' }}>
+                                            <Typography variant="caption" className={style.leadOwner} gutterBottom sx={{ display: 'block', textAlign: 'center' }}>
                                                 {item.source?.type}
                                             </Typography>
                                         </TableCell>
                                         <TableCell>
                                             <div className={style.leadOwner} style={{ cursor: 'pointer' }} onClick={() => { setOpen(true); setSelectedName(item.name) }}>
-                                                <CalendarMonthOutlinedIcon />
-                                                <Typography variant="caption" gutterBottom sx={{ display: 'block', ml: 1, whiteSpace: 'nowrap' }}>
+                                                <CalendarMonthOutlinedIcon sx={{ fontSize: 17 }} />
+                                                <Typography variant="caption" sx={{ display: 'block', ml: 1, whiteSpace: 'nowrap' }}>
                                                     Set follow up
                                                 </Typography>
                                             </div>
@@ -281,6 +287,7 @@ function LeadsTable() {
                                         </TableCell>
                                         <TableCell
                                             sx={{
+                                                position: "sticky",
                                                 right: 0,
                                                 background: "#fff",
                                                 zIndex: 2,
@@ -309,7 +316,8 @@ function LeadsTable() {
                             borderRadius: "16px",
                             border: "1px solid #E5E7EB",
                             ml: 1,
-                            boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)"
+                            p: 2,
+                            boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.15)"
                         }}
                     >
                         <div className={style.detailsBox}>
@@ -332,7 +340,7 @@ function LeadsTable() {
                                     <ShareOutlinedIcon fontSize="small" />
                                 </div>
 
-                                <div className={`${style.iconBox} ${style.active}`}>
+                                <div className={style.iconBox}>
                                     <LocalMallOutlinedIcon fontSize="small" />
                                 </div>
                             </div>
@@ -465,7 +473,7 @@ function LeadsTable() {
                 className={style.detailsModelBox}
             >
                 <Box sx={styleForDetailsModel}>
-                    <SelectedLeadDetails selectedLead={selectedLead} onClose={()=>setSelectedLead(null)} />
+                    <SelectedLeadDetails selectedLead={selectedLead} onClose={() => setSelectedLead(null)} />
                 </Box>
             </Modal>
         </div>

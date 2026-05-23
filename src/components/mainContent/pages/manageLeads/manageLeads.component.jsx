@@ -7,6 +7,7 @@ import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import RadioButtonCheckedOutlinedIcon from '@mui/icons-material/RadioButtonCheckedOutlined';
 import LeadsTable from './components/table/table.component.jsx';
 import { LEADS } from '../../../../api/leads.js';
+import FilterBox from './components/filterBox/filterBox.component.jsx';
 
 function ManageLeads() {
     const calculateValue = (title) => {
@@ -32,6 +33,9 @@ function ManageLeads() {
             </div>
             <div className={style.mainContent}>
                 <div>
+                    <FilterBox />
+                </div>
+                <div style={{marginBottom: '20px'}}>
                     <Typography variant="h6" gutterBottom>
                         {PERFORMANCE_OVERVIEW.TITLE}
                     </Typography>
