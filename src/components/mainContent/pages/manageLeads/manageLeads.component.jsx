@@ -25,7 +25,7 @@ function ManageLeads() {
         <div style={{width: '100%'}}>
             <div className={style.header}>
                 <Typography variant="h5" gutterBottom>
-                    {HEADER}
+                    <b>{HEADER}</b>
                 </Typography>
                 <Typography variant="subtitle2" gutterBottom>
                     {DESCRIPTION}

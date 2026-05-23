@@ -47,12 +47,16 @@ const menuItems = [
 function SideBar() {
     return (
         <div className={style.container}>
-            <div className={style.header}>Travelogy</div>
-            {/* <div className={style.imageContainer}>
-                <img src={logo} alt="logo" className={style.image}/>
-            </div> */}
+            <div className={style.header}>
+                <img
+                    src={logo}
+                    alt='GrowEasy logo'
+                    style={{ width: '30px', height: '30px' }}
+                />
+                <h3> GrowEasy </h3>
+            </div>
             <DropdownList />
-            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'space-between', flex: 1}}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'space-between', flex: 1 }}>
                 <div>
                     {menuItems.map(item => (
                         <div key={item.id} className={style.itemContainer}>
@@ -60,7 +64,7 @@ function SideBar() {
                                 {item.title}
                             </Typography>
                             {item?.list.map(subItem => (
-                                <div key={subItem.id} className={style.subItemContainer}>
+                                <div key={subItem.id} className={subItem.link === '/manage-leads' ? style.subItemContainerActive : style.subItemContainer} >
                                     <div className={style.subItem}>{subItem.icon}</div>
                                     <Typography className={style.subItem} variant="body2" gutterBottom>
                                         <a href={subItem.link} className={style.link}>{subItem.title}</a>

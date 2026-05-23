@@ -123,8 +123,6 @@ function LeadsTable() {
     const [selectedName, setSelectedName] = useState('');
     const [tableData, setTableData] = useState(LEADS);
 
-    console.log("selected lead: ", selectedLead);
-
     const onfieldChange = (e) => {
         const newdatas = LEADS.filter(x => x.name.toLowerCase().includes(e.target.value.toLowerCase()) || x.mobile.includes(e.target.value));
         setTableData(newdatas);
@@ -170,14 +168,14 @@ function LeadsTable() {
                             <TableHead>
                                 <TableRow>
                                     <TableCell
-                                        className={style.tableHeader}
                                         sx={{
-                                            left: 0,
+                                            // left: 0,
                                             zIndex: 3,
                                             background: "#fff",
                                             minWidth: 160,
                                             fontWeight: 600,
                                         }}
+                                        className={style.tableHeader}
                                     >
                                         LEAD NAME
                                     </TableCell>
@@ -194,12 +192,13 @@ function LeadsTable() {
                                     <TableCell className={style.tableHeader} sx={{ minWidth: 180, fontWeight: 600 }}>ACQUISITION SOURCE</TableCell>
 
                                     <TableCell
-                                        className={style.tableHeader}
                                         sx={{
                                             position: "sticky",
+                                            right: 0,
                                             background: "#fff",
                                             fontWeight: 700,
                                         }}
+                                        className={style.tableHeader}
                                     >
                                         ACTIONS
                                     </TableCell>
